@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeyakumar S | Cybersecurity Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #1e293b;
+            --accent-color: #10b981;
+            --text-color: #e2e8f0;
+            --light-text: #94a3b8;
+            --card-bg: #1e293b;
+            --hover-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 0 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230f172a"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%2310b981" stroke-width="0.5" opacity="0.1"/></svg>');
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #10b981, #0ea5e9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light-text);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero .pronouns {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            color: var(--light-text);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero .achievements {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+
+        .badge {
+            background-color: var(--secondary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge i {
+            color: var(--accent-color);
+        }
+
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .quick-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .quick-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--light-text);
+        }
+
+        .about-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+        }
+
+        /* Leadership Section */
+        .leadership-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .leadership-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .leadership-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .leadership-card h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .leadership-card p {
+            color: var(--light-text);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-list li::before {
+            content: "▶";
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .project-links a:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Achievements Section */
+        .achievements-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .achievement-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .achievement-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .certification-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--secondary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        /* Admin Link */
+        .admin-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .admin-link:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">JK</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm Jeyakumar S</h1>
+            <p class="subtitle">Cybersecurity Enthusiast | Penetration Tester | OSINT Analyst</p>
+            <p class="pronouns">He/Him | President – Cyber Sentinel Club CTF</p>
+            <div class="achievements">
+                <div class="badge"><i class="fas fa-shield-alt"></i> [0x9][MAGE]</div>
+                <div class="badge"><i class="fas fa-trophy"></i> Top 6% on TryHackMe</div>
+                <div class="badge"><i class="fas fa-certificate"></i> CEH Certified</div>
+                <div class="badge"><i class="fas fa-users"></i> Team Leader</div>
+                <div class="badge"><i class="fas fa-code"></i> Python & OSINT Automation</div>
+            </div>
+            <div class="quick-links">
+                <a href="mailto:jeyakumars119@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://www.linkedin.com/in/jeyakumar-s-255b03333/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://tryhackme.com/p/Jkx00" target="_blank"><i class="fas fa-user-secret"></i> TryHackMe</a>
+                <a href="https://ctf.hackthebox.com/user/profile/502710" target="_blank"><i class="fas fa-cube"></i> Hack The Box</a>
+                <a href="https://medium.com/@jeyakumars119" target="_blank"><i class="fab fa-medium"></i> Medium</a>
+                <a href="https://jkx00.github.io/Knull-CTF/" target="_blank"><i class="fas fa-flag"></i> Knull CTF</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm Jeyakumar, a cybersecurity enthusiast based in Madurai, India. I specialize in penetration testing, OSINT research, CTF challenges, and building security tools. I'm currently the President of the Cyber Sentinel Club, where I mentor and guide students in offensive security and CTFs.</p>
+                    <p>With strong leadership qualities, I excel at building and guiding teams toward achieving complex cybersecurity objectives. I believe in fostering collaboration and knowledge sharing to create stronger security communities.</p>
+                    <p>I love building tools and learning platforms that promote cybersecurity awareness. My passion lies in breaking systems to understand them better, and helping others secure their digital presence.</p>
+                    <div class="certification-badge">
+                        <i class="fas fa-certificate"></i> Certified Ethical Hacker (CEH)
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/300" alt="Jeyakumar S" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="leadership">
+        <div class="container">
+            <h2 class="section-title">Leadership Experience</h2>
+            <div class="leadership-container">
+                <div class="leadership-card">
+                    <h3><i class="fas fa-user-tie"></i> President – Cyber Sentinel Club</h3>
+                    <p>Leading a team of cybersecurity enthusiasts, organizing CTF events, workshops, and training sessions. Mentoring students in offensive security techniques and fostering a collaborative learning environment.</p>
+                </div>
+                <div class="leadership-card">
+                    <h3><i class="fas fa-chalkboard-teacher"></i> Technical Mentor</h3>
+                    <p>Guiding junior team members and students in complex cybersecurity concepts, penetration testing methodologies, and OSINT techniques. Creating structured learning paths for skill development.</p>
+                </div>
+                <div class="leadership-card">
+                    <h3><i class="fas fa-project-diagram"></i> Project Lead</h3>
+                    <p>Leading security tool development projects from conception to deployment. Coordinating team efforts, setting project milestones, and ensuring timely delivery of high-quality security solutions.</p>
+                </div>
+                <div class="leadership-card">
+                    <h3><i class="fas fa-users-cog"></i> Team Builder</h3>
+                    <p>Recruiting and building effective cybersecurity teams with complementary skills. Creating an inclusive environment that encourages innovation and continuous learning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <h3>Cybersecurity & Penetration Testing</h3>
+                    <ul class="skill-list">
+                        <li>Web Security</li>
+                        <li>Network Security</li>
+                        <li>Wi-Fi Security</li>
+                        <li>Linux Security</li>
+                        <li>Ethical Hacking</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Leadership & Management</h3>
+                    <ul class="skill-list">
+                        <li>Team Leadership</li>
+                        <li>Project Management</li>
+                        <li>Mentoring & Training</li>
+                        <li>Strategic Planning</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>OSINT & CTF Research</h3>
+                    <ul class="skill-list">
+                        <li>Username tracking</li>
+                        <li>Metadata analysis</li>
+                        <li>Image forensics</li>
+                        <li>CTF Challenge Design</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Scripting & Automation</h3>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>Bash</li>
+                        <li>OSINT Automation</li>
+                        <li>Security Tool Development</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Tooling</h3>
+                    <ul class="skill-list">
+                        <li>Aircrack-ng</li>
+                        <li>Burp Suite</li>
+                        <li>Wireshark</li>
+                        <li>Nmap</li>
+                        <li>Metasploit</li>
+                        <li>CAPS</li>
+                        <li>Nessus</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Cloud & Hosting</h3>
+                    <ul class="skill-list">
+                        <li>Netlify</li>
+                        <li>GitHub Pages</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Others</h3>
+                    <ul class="skill-list">
+                        <li>Prompt Engineering</li>
+                        <li>Report Writing</li>
+                        <li>Blog Publishing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-container">
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x200" alt="CyberGuard Project" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">🔐 CyberGuard – Cybersecurity Awareness Game</h3>
+                        <p>An interactive browser game teaching cybersecurity fundamentals with quizzes, levels, and gamified learning.</p>
+                        <p><strong>Topics include:</strong></p>
+                        <ul>
+                            <li>Password Protection</li>
+                            <li>Phishing Awareness</li>
+                            <li>Malware Education</li>
+                        </ul>
+                        <p>Built using responsive design with visual feedback and tracking.</p>
+                        <div class="project-links">
+                            <a href="https://cyberguard-jkx00.netlify.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x200" alt="NOMERA Project" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">🕵️ NOMERA – Fast OSINT Username Search Tool</h3>
+                        <p>A high-speed web-based tool that searches for usernames across platforms.</p>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Lightweight and fast</li>
+                            <li>Scraping + API support</li>
+                            <li>Useful for CTFs and digital forensics</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://jkx00.github.io/Nomera/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x200" alt="Wi-Fi Deauth Tool" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">📡 Wi-Fi Deauthentication Tool</h3>
+                        <p>A Bash script using airodump-ng and aireplay-ng from Aircrack-ng.</p>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Scans and monitors networks</li>
+                            <li>Performs deauthentication on clients (educational/authorized use only)</li>
+                            <li>Useful for Wi-Fi pentesting training</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="container">
+            <h2 class="section-title">Certifications & Achievements</h2>
+            <div class="achievements-container">
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-certificate"></i></div>
+                    <h3>Certified Ethical Hacker (CEH)</h3>
+                    <p>EC-Council certification for ethical hacking and penetration testing</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
+                    <h3>Top 6% on TryHackMe</h3>
+                    <p>Achieved top ranking among global cybersecurity enthusiasts</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Active member of [0x9][MAGE]</h3>
+                    <p>Contributing to elite cybersecurity community</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-user-tie"></i></div>
+                    <h3>President – Cyber Sentinel Club CTF</h3>
+                    <p>Leading and mentoring students in offensive security</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-flag"></i></div>
+                    <h3>Creator of Knull CTF</h3>
+                    <p>Developed a platform for challenge creation and event hosting</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-puzzle-piece"></i></div>
+                    <h3>CTF Challenge Designer</h3>
+                    <p>Created high-level challenges in various domains</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-blog"></i></div>
+                    <h3>Technical Blogger</h3>
+                    <p>Sharing knowledge through Medium publications</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-container">
+                <p>Interested in collaborating or hiring? Reach out!</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>jeyakumars119@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Madurai, Tamil Nadu, India</span>
+                    </div>
+                </div>
+                <div class="quick-links">
+                    <a href="mailto:jeyakumars119@gmail.com"><i class="fas fa-envelope"></i> Email Me</a>
+                    <a href="#" target="_blank"><i class="fas fa-file-alt"></i> Download Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Link -->
+    <a href="admin.html" class="admin-link" title="Admin Panel">
+        <i class="fas fa-cog"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made with 💻 & 🔐 by Jeyakumar S</p>
+        <p>© 2025 Jeyakumar. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(15, 23, 42, 0.95)';
+                navbar.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(15, 23, 42, 0.9)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Add smooth scrolling to all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
